@@ -9,9 +9,9 @@ from pybricks.tools import print, wait, StopWatch
 from pybricks.robotics import DriveBase
 
 # Write your program here
-motor_right = Motor(Port.B)
+motor_right = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 motor_left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 robot = DriveBase(motor_left, motor_right, 56, 130)
-robot.drive(300, 0, 4000)
+robot.drive_time(300, 0, 4000)
 brick.sound.beep()
 
