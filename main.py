@@ -15,3 +15,10 @@ robot = DriveBase(motor_left, motor_right, 56, 130)
 robot.drive_time(300, 0, 4000)
 brick.sound.beep()
 
+ultrasonicSensor = UltrasonicSensor(port)
+while ultrasonicSensor.distance() < 500: # + distance the sensor is from the front of the robot
+    robot.drive(300, 0)
+    wait(5)
+brick.sound.beep()
+while not button.CENTER in brick.buttons():
+    wait(10)
