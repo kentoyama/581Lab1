@@ -11,5 +11,6 @@ from pybricks.robotics import DriveBase
 # Write your program here
 motor_right = Motor(Port.B)
 motor_left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+robot = DriveBase(motor_left, motor_right, 56, 130)
 brick.sound.beep()
 
