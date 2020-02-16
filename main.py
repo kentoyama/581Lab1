@@ -12,7 +12,7 @@ from pybricks.robotics import DriveBase
 motor_right = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 motor_left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 robot = DriveBase(motor_left, motor_right, 56, 130)
-robot.drive_time(300, 0, 3900)
+robot.drive_time(300, 0, 3900)  # run_time(613.88, 3900)
 wait(1000)
 brick.sound.beep()
 while not Button.CENTER in brick.buttons():
@@ -23,15 +23,15 @@ ultrasonicSensor = UltrasonicSensor(Port.S1)
 
 while ultrasonicSensor.distance() > 530 or ultrasonicSensor.distance() < 470: # + distance the sensor is from the front of the robot
     if ultrasonicSensor.distance() > 530:
-        robot.drive(150,0)
+        robot.drive(150,0) #run(306.94)
     if ultrasonicSensor.distance() < 470:
-        robot.drive(-150, 0)
+        robot.drive(-150, 0) #run(-306.94)
 wait(1500)
 while ultrasonicSensor.distance() > 505 or ultrasonicSensor.distance() < 495: # + distance the sensor is from the front of the robot
     if ultrasonicSensor.distance() > 505:
-        robot.drive(50,0)
+        robot.drive(50,0) #run(102.31)
     if ultrasonicSensor.distance() < 495:
-        robot.drive(-50, 0)
+        robot.drive(-50, 0) #run(-102.31)
 wait(500)
 brick.sound.beep()
 while not button.CENTER in brick.Buttons():
