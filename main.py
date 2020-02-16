@@ -22,9 +22,9 @@ while not Button.CENTER in brick.buttons():
 ultrasonicSensor = UltrasonicSensor(Port.S1)
 
 while ultrasonicSensor.distance() > 530 or ultrasonicSensor.distance() < 470: # + distance the sensor is from the front of the robot
-    if ultrasonicSensor.distance() > 510:
+    if ultrasonicSensor.distance() > 530:
         robot.drive(150,0)
-    if ultrasonicSensor.distance() < 490:
+    if ultrasonicSensor.distance() < 470:
         robot.drive(-150, 0)
 wait(1500)
 while ultrasonicSensor.distance() > 505 or ultrasonicSensor.distance() < 495: # + distance the sensor is from the front of the robot
