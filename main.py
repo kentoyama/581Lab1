@@ -9,10 +9,13 @@ from pybricks.tools import print, wait, StopWatch
 from pybricks.robotics import DriveBase
 
 # Write your program here
-motor_right = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-motor_left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
-robot = DriveBase(motor_left, motor_right, 56, 130)
-robot.drive_time(300, 0, 3900)  # run_time(613.88, 3900)
+right = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+left = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+stop_type = Stop.COAST
+right.run_time(613.88, 4400, Stop.BRAKE, False)
+left.run_time(613.88, 4400, Stop.BRAKE, True)
+right.stop()
+left.stop()
 wait(1000)
 brick.sound.beep()
 while not Button.CENTER in brick.buttons():
@@ -20,20 +23,49 @@ while not Button.CENTER in brick.buttons():
 
 
 ultrasonicSensor = UltrasonicSensor(Port.S1)
+stop_type = Stop.COAST
 
-while ultrasonicSensor.distance() > 530 or ultrasonicSensor.distance() < 470: # + distance the sensor is from the front of the robot
-    if ultrasonicSensor.distance() > 530:
-        robot.drive(150,0) #run(306.94)
-    if ultrasonicSensor.distance() < 470:
-        robot.drive(-150, 0) #run(-306.94)
-wait(1500)
-while ultrasonicSensor.distance() > 505 or ultrasonicSensor.distance() < 495: # + distance the sensor is from the front of the robot
-    if ultrasonicSensor.distance() > 505:
-        robot.drive(50,0) #run(102.31)
-    if ultrasonicSensor.distance() < 495:
-        robot.drive(-50, 0) #run(-102.31)
-wait(500)
+while ultrasonicSensor.distance() > 515 or ultrasonicSensor.distance() < 485: # + distance the sensor is from the front of the robot
+    
+    if ultrasonicSensor.distance() > 515:
+        right.run(200)
+        left.run(215)
+        wait(100)
+        right.stop()
+        left.stop()
+    if ultrasonicSensor.distance() < 485:
+        right.run(-200)
+        left.run(-215)
+        wait(100)
+        right.stop()
+        left.stop()
+wait(1000)
 brick.sound.beep()
-while not button.CENTER in brick.Buttons():
+while not Button.CENTER in brick.Buttons():
     wait(10)
 
+
+TouchSensorR = TouchSensor(Port.S2)
+TouchSensorL = TouchSensor(Port.S4)
+while TouchSensorR.pressed() == False and TouchSensorL.pressed() == False:
+    right.run(360)
+    left.run(361)
+
+right.stop()
+left.stop()
+
+while ultrasonicSensor.distance() > 510 or ultrasonicSensor.distance() < 490:
+    if ultrasonicSensor.distance() > 510:
+         right.run(200)
+         left.run(210)
+         wait(100)
+         right.stop()
+         left.stop()
+    if ultrasonicSensor.distance() < 490:
+         right.run(-200)
+         left.run(-215)
+         wait(100)
+         right.stop()
+         left.stop()
+wait(1000)
+brick.sound.beep()
